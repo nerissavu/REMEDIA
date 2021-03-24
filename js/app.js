@@ -1,15 +1,20 @@
-import InputWrapper from './components/InputWrapper.js'
-import LoginForm from './components/LoginForm.js'
-import SignupForm from './components/SignupForm.js'
+import InputWrapper from './components/SigninSignup/InputWrapper.js'
+import LoginForm from './components/SigninSignup/LoginForm.js'
+import SignupForm from './components/SigninSignup/SignupForm.js'
+import Overlay from './components/SigninSignup/Overlay.js'
+import NavBar from './components/MainSite.js/NavBar.js'
 
-const signUpButton = document.getElementById('signUp');
-const signInButton = document.getElementById('signIn');
-const container = document.getElementById('app');
 
-signUpButton.addEventListener('click', () => {
-	container.classList.add("right-panel-active");
-});
+import SigninSignup from './screens/SigninSignup.js'
 
-signInButton.addEventListener('click', () => {
-	container.classList.remove("right-panel-active");
-});
+// const signUpButton = document.getElementById('signUp');
+// const signInButton = document.getElementById('signIn');
+// const container = document.getElementById('app');
+
+// signUpButton.addEventListener('click', () => {
+// 	container.classList.add("right-panel-active");
+// });
+
+// signInButton.addEventListener('click', () => {
+// 	container.classList.remove("right-panel-active");
+// });
