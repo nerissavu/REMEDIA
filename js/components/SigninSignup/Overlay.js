@@ -1,12 +1,13 @@
+import SigninSignup from "../../screens/SigninSignup.js";
 
 const $template = document.createElement('template');
 $template.innerHTML = /*html*/ `
     <!-- Font Awesome-->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>    
     <div id="overlay-panel" class="overlay-panel">
-        <h1 id="title">Welcome Back!</h1>
-        <p id = "information">To keep connected with us please login with your personal info</p>
-        <button class="ghost" id="button">Sign In</button>
+        <h1 id="title"></h1>
+        <p id = "information"></p>
+        <button class="ghost" id="button"></button>
     </div>
 
     <style>
@@ -110,11 +111,10 @@ export default class Overlay extends HTMLElement {
         this.$information = this.shadowRoot.getElementById('title')
         this.$button = this.shadowRoot.getElementById('button')
         this.$overlayPanel = this.shadowRoot.getElementById('overlay-panel')
-
     }
 
     static get observedAttributes() {
-        return ['title','infomation','button','class'];
+        return ['title','infomation','button'];
     }
 
     attributeChangedCallback(attrName, oldValue, newValue) {
@@ -130,24 +130,15 @@ export default class Overlay extends HTMLElement {
             case 'button':
                 this.$button.innerHTML = newValue
                 break
-            case 'class':
-                this.$overlayPanel.classList.add(newValue)
-                break
-
-
         }
 
     }   
-    connectedCallback() {
-        this.$button.onclick = () => {
-            let button_name = this.$button.value;
 
-            if (button_name == 'Sign In'){
-                removeClassToContainer()
-            } else if (button_name == 'Sign up'){
-                addClassToContainer()
-            }
+    set changeClasstoContainer(callback) {
+        this.$button.onclick = () => {
+            callback()
         }
     }
+    
 }
 window.customElements.define('over-lay', Overlay)

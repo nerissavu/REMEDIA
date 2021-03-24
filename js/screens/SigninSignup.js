@@ -1,3 +1,5 @@
+import Overlay from "../components/SigninSignup/Overlay.js";
+
 const $template = document.createElement('template');
 $template.innerHTML = /*html*/ `
 
@@ -13,8 +15,8 @@ $template.innerHTML = /*html*/ `
 
     <div class="overlay-container">
         <div class="overlay">
-            <over-lay class="overlay-left" title="Welcome Back!" infomation="To keep connected with us please login with your personal info" button="Sign In" ></over-lay>
-            <over-lay class="overlay-right" title="Hello, Friend!" infomation="Enter your personal details and start journey with us" button="Sign Up" ></over-lay>
+            <over-lay id="overlay-left" class="overlay-left overlay-panel" title="Welcome Back!" infomation="To keep connected with us please login with your personal info" button="Sign In" ></over-lay>
+            <over-lay id="overlay-right" class="overlay-right overlay-panel" title="Hello, Friend!" infomation="Enter your personal details and start journey with us" button="Sign Up" ></over-lay>
         </div>
     </div>
 </div>
@@ -22,22 +24,23 @@ $template.innerHTML = /*html*/ `
     
 `;
 
-export default class SigninSignup extends HTMLElement {
+export default class SigninSignup extends HTMLElement{
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild($template.content.cloneNode(true));
 
         this.$container = this.shadowRoot.getElementById('container')
-
+        this.$overLayLeft = this.shadowRoot.getElementById('overlay-left')
+        this.$overLayRight = this.shadowRoot.getElementById('overlay-right')
     }
 
     connectedCallback() {
-        function addClassToContainer(){
-            this.$container.classList.add("right-panel-active")
+        this.$overLayLeft.changeClasstoContainer = () => {
+                this.$container.classList.remove("right-panel-active")
         }
-        function removeClassToContainer(){
-            this.$container.classList.remove("right-panel-active")
+        this.$overLayRight.changeClasstoContainer = () => {
+                this.$container.classList.add("right-panel-active")
         }
     }
 }
