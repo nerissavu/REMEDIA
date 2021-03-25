@@ -3,7 +3,7 @@ import Overlay from "../components/SigninSignup/Overlay.js";
 const $template = document.createElement('template');
 $template.innerHTML = /*html*/ `
 
-<link rel="stylesheet" href="../../index.css">
+<link rel="stylesheet" href="../../css/signinsignup.css">
 <div class="container" id="container" >
     <div class="form-container sign-up-container">
         <signup-form></signup-form>
@@ -15,13 +15,11 @@ $template.innerHTML = /*html*/ `
 
     <div class="overlay-container">
         <div class="overlay">
-            <over-lay id="overlay-left" class="overlay-left overlay-panel" title="Welcome Back!" infomation="To keep connected with us please login with your personal info" button="Sign In" ></over-lay>
-            <over-lay id="overlay-right" class="overlay-right overlay-panel" title="Hello, Friend!" infomation="Enter your personal details and start journey with us" button="Sign Up" ></over-lay>
+            <over-lay id="overlay-left" class="overlay-left overlay-panel" title="Welcome Back!" information="To keep connected with us please login with your personal info" button="Sign In" ></over-lay>
+            <over-lay id="overlay-right" class="overlay-right overlay-panel" title="Hello, Friend!" information="Enter your personal details and start journey with us" button="Sign Up" ></over-lay>
         </div>
     </div>
-</div>
-
-    
+</div>    
 `;
 
 export default class SigninSignup extends HTMLElement{

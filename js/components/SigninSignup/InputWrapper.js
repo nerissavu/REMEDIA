@@ -1,42 +1,10 @@
 const $template = document.createElement('template');
 $template.innerHTML = /*html*/ `
-
+    <link rel="stylesheet" href="../../../css/signinsignup.css">
     <div class="form-group">
         <input type = 'text' id='input' class='form-control' placeholder = 'This is input'>
         <div id='error'></div>
     </div>
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            background: #f6f5f7;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            font-family: 'Montserrat', sans-serif;
-            height: 100vh;
-            margin: -20px 0 50px;
-        }
-
-        input {
-            background-color: #eee;
-            border: none;
-            padding: 12px 15px;
-            margin: 8px 0;
-            width: 300px;
-        }
-
-        #error {
-            color: red; 
-            text-align: left;
-            font-size: 10px
-        }
-    </style>
 `
 
 export default class InputWrapper extends HTMLElement {
