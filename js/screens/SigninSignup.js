@@ -4,6 +4,8 @@ const $template = document.createElement('template');
 $template.innerHTML = /*html*/ `
 
     <link rel="stylesheet" href="../../css/signinsignup.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>    
+
     <div class="container" id="container" >
         <div class="form-container sign-up-container">
             <signup-form></signup-form>
@@ -19,7 +21,8 @@ $template.innerHTML = /*html*/ `
                 <over-lay id="overlay-right" class="overlay-right overlay-panel" title="Hello, Friend!" information="Enter your personal details and start journey with us" button="Sign Up" ></over-lay>
             </div>
         </div>
-    </div>    
+    </div>
+    
 `;
 
 export default class SigninSignup extends HTMLElement{
