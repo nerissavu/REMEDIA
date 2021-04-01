@@ -5,4 +5,8 @@ router.on('/signinsignup', function(){
     $app.innerHTML = '<signin-signup></signin-signup>'
 }).resolve();
 
+// router.on(function(){
+//     router.navigate('/signinsignup')
+// }).resolve();
+
 window.router = router;
