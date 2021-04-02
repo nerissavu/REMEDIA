@@ -9,23 +9,20 @@ $template.innerHTML = /*html*/ `
                 <img id="image" src="../../../assets/fact/prctm.png" class="img" alt="blog">
             </div>
             <div class="post-info flex-row">
-                <span id="user" style="color: white;"><i class="fas fa-user "></i>&nbsp;&nbsp;Admin</span>
-                <span id="date" style="color: white;"><i class="fas fa-calendar-alt "></i>&nbsp;&nbsp;July 29,2019</span>
+                <span style="color: white;">
+                    <i class="fas fa-user "></i>
+                    <span id="user">Admin</span>
+                </span>
+                <span style="color: white;">
+                    <i class="fas fa-calendar-alt "></i>
+                    <span id="date">July 29,2019</span>
+                </span>
             </div>
         </div>
         <div class="post-title">
-            <a id="title" class="title" href="./7factsaboutparacetamol.html">7 Important Facts Everyone Should Know About Paracetamol</a>
-            <p id="preview-content" style="white-space: pre ; word-break: break-word ">
-Paracetamol is the most popular pain-killer found in almost every household, it is easily
-the first-choice drug used to treat all sorts of human-body aches.
+            <a id="title" class="title" href="./7factsaboutparacetamol.html"></a>
+            <p id="preview-content" style="white-space: pre-line ; ">
 
-In 2015, The Health and Social Care Information Centre data revealed; paracetamol has
-been prescribed 22.9 million times in the England community sector, making it the 14th
-most popular prescribed drug. In comparison to anti-inflammatory drugs, paracetamol is
-portrayed as the safest pain-killer in the world.
-
-Is paracetamol really safe? What is paracetamol? How does paracetamol work? What else
-don’t we know about paracetamol?
             </p>
             <button class="btn post-btn"><a id="link" style="color: white; font-size: medium;" href="./7factsaboutparacetamol.html">Read More
                     &nbsp;&nbsp; <i class="fas fa-arrow-right"></i></a>

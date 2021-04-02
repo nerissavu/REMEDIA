@@ -27,18 +27,14 @@ export async function signin(email, password) {
         .firestore()
         .collection('users')
         .where('email','==', email)
+        .where("password", "==", md5(password))
         .get();
 
     if(response.empty) {
         alert('Your email or your password is incorrect')
     }else{
-        for(let document of response.docs){
-            if (document.data().password == md5(password)){
-                console.log('Signin Successfully')
-            }else{
-                alert('Your email or your password is incorrect')
-            }
-        }
+        console.log('Signin Successfully')
+        router.navigate('/homepage');
     }
 
 

@@ -28,6 +28,7 @@ export default class LoginForm extends HTMLElement {
         this.$LoginForm = this.shadowRoot.getElementById('login-form')
         this.$email = this.shadowRoot.getElementById('email')
         this.$password= this.shadowRoot.getElementById('password')
+        this.$button= this.shadowRoot.getElementById('realsignIn')
     }
     // Được gọi duy nhất khi thẻ lần đầu tiên xuất hiện trong body
     connectedCallback() {
@@ -58,8 +59,11 @@ export default class LoginForm extends HTMLElement {
                 // console.log('Signed in successfully')
             }
 
+            const promise = firebase.auth().signInWithEmailAndPassword(email,password)
         }
+
     }
+
 }
 
 window.customElements.define('login-form', LoginForm)

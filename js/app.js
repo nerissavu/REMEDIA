@@ -15,6 +15,7 @@ import FactContainer from './components/MainSite.js/FactContainer.js'
 import InfographicContainer from './components/MainSite.js/InfographicContainer.js'
 import Newsletter from './components/MainSite.js/NewsLetter.js'
 import FactAndInfo from './components/MainSite.js/FactAndInfo.js'
+import Footer from './components/MainSite.js/Footer.js'
 
 
 import SigninSignup from './screens/SigninSignup.js'

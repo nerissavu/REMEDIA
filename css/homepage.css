@@ -796,7 +796,7 @@ section .container .owl-nav{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: .5rem 2rem;
+    /* padding: .5rem 2rem; */
 }
 
 .newsletter .input-element{
@@ -820,3 +820,100 @@ section .container .owl-nav{
 
 
 /*------- FACTS & INFOGRAPHIC---------------*/
+
+/*------- FOOTER---------------*/
+footer.footer{
+    height: 100%;
+    background-image: linear-gradient(to right, #3ab5b0 0%, #3d99be 31%, #56317a 100%); 
+    position: relative;
+    box-shadow: 0 9px 9px rgba(20, 20, 20, 0.25), 
+    0 9px 9px rgba(8, 8, 8, 0.25);
+    margin-top: 100px;
+}
+
+footer.footer .container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+footer.footer .container > div{
+    flex-grow: 1;
+    flex-basis: 0;
+    padding: 3rem .9rem;
+}
+
+footer.footer .container h2{
+    color: white;
+}
+
+footer.footer .newsletter .form-element{
+    background: black;
+    display: inline-block;
+}
+
+footer.footer .newsletter .form-element input{
+    padding: .5rem .5rem;
+    border: none;
+    background: transparent;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    width: 75%;
+    outline: none;
+
+}
+
+footer.footer .newsletter .form-element span{
+    background:linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+    padding: 0.5rem 0.67rem;
+    cursor: pointer;
+}
+
+#pointer{
+    padding-right: 12px;
+}
+
+footer.footer .instagram div > img{
+    display: inline-block;
+    width: 25%;
+    height: 50%;
+    margin: 0.1rem 0.1rem;
+}
+
+footer.footer .follow div i{
+    color: white;
+    padding: 0 .4rem;
+}
+
+footer.footer .rights{
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+footer.footer .rights h4 a{
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+}
+
+footer.footer .move-up{
+    position: absolute;
+    right: 6%;
+    top: 50%;
+}
+
+footer.footer .move-up span{
+    color: black;
+    
+}
+
+footer.footer .move-up span:hover{
+    color: white;
+    cursor: pointer;
+}
+
+#last_icon{
+    color: black
+}
+
+/*------- FOOTER---------------*/

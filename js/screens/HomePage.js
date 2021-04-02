@@ -17,6 +17,49 @@ $template.innerHTML = /*html*/ `
     <our-team></our-team>
     <br>
     <our-mission></our-mission>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>     <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <fact-and-info></fact-and-info>
+    <foo-ter></foo-ter>
 `
 
 export default class HomePage extends HTMLElement {

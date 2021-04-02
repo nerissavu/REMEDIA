@@ -51,6 +51,8 @@ export default class NavBar extends HTMLElement {
         this.shadowRoot.appendChild($template.content.cloneNode(true))
 
     }
+
+    
 }
 
 window.customElements.define('nav-bar', NavBar)
