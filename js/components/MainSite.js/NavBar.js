@@ -37,10 +37,10 @@ $template.innerHTML = /*html*/ `
                     <li id="signin" class="nav-link">
                         <a class="nav-letter" href="./login/signinsignup.html" id="sign_in_btn">SIGN IN</a>
                     </li>
-                    <li id='name' class="nav-link">
-                        <a class="nav-letter" href="./login/signinsignup.html" id="sign_in_btn">NAME</a>
+                    <li class="nav-link">
+                        <a id='name' class="nav-letter" href="./login/signinsignup.html" id="sign_in_btn">NAME</a>
                     </li>
-                    <li id='signout' style="visibility: hidden;" class="nav-link">
+                    <li id='signout' class="nav-link">
                         <a class="nav-letter" href="" id="log_out_btn">SIGN OUT</a>
                     </li>
                 </ul>
@@ -66,14 +66,15 @@ export default class NavBar extends HTMLElement {
         // console.log(this.currentUser)
         try {
             this.currentUser = await getCurrentUser();
-            this.$signIn.style.display = none
-            this.$name.style.display = block
+            this.$signIn.style.display = 'none'
+            this.$name.style.display = 'block'
+            console.log(this.currentUser.name)
             this.$name.innerHTML == this.currentUser.name
-            this.$signOut.style.display == block
+            this.$signOut.style.display == 'block'
         } catch (error) {
-            this.$signIn.style.display = block
-            this.$name.style.display = none
-            this.$signOut.style.display = none
+            this.$signIn.style.display = 'block'
+            this.$name.style.display = 'none'
+            this.$signOut.style.display = 'none'
         }
         
     }
