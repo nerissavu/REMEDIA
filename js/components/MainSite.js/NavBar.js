@@ -35,10 +35,10 @@ $template.innerHTML = /*html*/ `
                         <a class="nav-letter" href="./druglibrary.html">DRUG LIBRARY</a>
                     </li>
                     <li id="signin" class="nav-link">
-                        <a class="nav-letter" href="./login/signinsignup.html" id="sign_in_btn">SIGN IN</a>
+                        <a class="nav-letter" href="" id="sign_in_btn">SIGN IN</a>
                     </li>
-                    <li class="nav-link">
-                        <a id='name' class="nav-letter" href="./login/signinsignup.html" id="sign_in_btn">NAME</a>
+                    <li id='name-block' class="nav-link">
+                        <a id='name' class="nav-letter" href=""></a>
                     </li>
                     <li id='signout' class="nav-link">
                         <a class="nav-letter" href="" id="log_out_btn">SIGN OUT</a>
@@ -57,6 +57,7 @@ export default class NavBar extends HTMLElement {
 
         this.$signIn = this.shadowRoot.getElementById('signin')
         this.$name = this.shadowRoot.getElementById('name')
+        this.$nameBlock = this.shadowRoot.getElementById('name-block')
         this.$signOut = this.shadowRoot.getElementById('signout')
 
     }
@@ -67,16 +68,21 @@ export default class NavBar extends HTMLElement {
         try {
             this.currentUser = await getCurrentUser();
             this.$signIn.style.display = 'none'
-            this.$name.style.display = 'block'
+            this.$nameBlock.style.display = 'block'
             console.log(this.currentUser.name)
             this.$name.innerHTML == this.currentUser.name
-            this.$signOut.style.display == 'block'
+            this.$signOut.style.display = 'block'
         } catch (error) {
             this.$signIn.style.display = 'block'
             this.$name.style.display = 'none'
             this.$signOut.style.display = 'none'
         }
-        
+        this.$signIn.onclick = () => {
+            router.navigate('/signinsignup');
+        }
+        this.$signOut.onclick = () => {
+            localStorage.clear();
+        }
     }
     
 }
