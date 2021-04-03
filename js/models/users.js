@@ -1,48 +1,84 @@
 import {getDataFromDoc, md5} from '../utils.js'
 
 export async function signup(name, email, password) {
-    let response = await firebase
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then(async (userCredential) => {
+        // Signed in 
+        var user = userCredential.user;
+        console.log(userCredential)
+        // ...
+
+        let response = await firebase
         .firestore()
         .collection('users')
         .where('email','==', email)
         .get();
 
-    console.log(response);
+        console.log(response);
 
-    if(response.empty) {
-        await firebase.firestore().collection('users').add({
-            name: name,
-            email: email,
-            password: md5(password),
-        });
-    
-        console.log('Register Successfully')
-    }else {
-        alert('This email has been used')
-    }
+        if(response.empty) {
+            await firebase.firestore().collection('users').add({
+                name: name,
+                email: email,
+                password: md5(password),
+            });
+        }
+        // else {
+            // alert('This email has been used')
+        // }
+        alert('Signed Up Successfully')
+    })
+    .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ..
+        alert(errorMessage)
+      });
 }
 
 export async function signin(email, password) {
-    let response = await firebase
-        .firestore()
-        .collection('users')
-        .where('email','==', email)
-        .where("password", "==", md5(password))
-        .get();
+    firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(async (userCredential) => {
+        // Signed in
+            var user = userCredential.user;
+            console.log(userCredential)
+        // ...
 
-    if(response.empty) {
-        alert('Your email or your password is incorrect')
-    }else{
-        let userId = response.docs[0].id;
-        let token = generateToken(userId);
+            let response = await firebase
+                .firestore()
+                .collection('users')
+                .where('email','==', email)
+                .where("password", "==", md5(password))
+                .get();
 
-        localStorage.setItem("token", token);
-        await updateUser(userId, { token: token });
+            if(response.empty) {
+                // alert('Your email or your password is incorrect')
+            }else{
+                let userId = response.docs[0].id;
+                let token = generateToken(userId);
 
-        router.navigate('/homepage');
-    }
+                localStorage.setItem("token", token);
+                await updateUser(userId, { token: token });
+
+                router.navigate('/homepage');
+            }
+        })
+        .catch((error) => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            alert(errorMessage)
+         });
 
 
+}
+
+export function signOut() {
+    firebase.auth().signOut().then(() => {
+        // alert('Sign Out successfully')
+    }).catch((error) => {
+        var errorMessage = error.message;
+        alert(errorMessage) 
+    });
 }
 
 export async function updateUser(id, data) {
