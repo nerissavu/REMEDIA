@@ -30,8 +30,9 @@ export default class StoriesList extends HTMLElement {
 
     }
 
-    // connectedCallback() {
-    // }
+    connectedCallback() {
+        $(".owl-nav-prev").html('ngo')
+    }
 
 
 }

@@ -1,3 +1,5 @@
+import { getCurrentUser } from "../../models/users.js";
+
 const $template = document.createElement('template');
 $template.innerHTML = /*html*/ `
 
@@ -32,10 +34,13 @@ $template.innerHTML = /*html*/ `
                     <li class="nav-link">
                         <a class="nav-letter" href="./druglibrary.html">DRUG LIBRARY</a>
                     </li>
-                    <li class="nav-link">
+                    <li id="signin" class="nav-link">
                         <a class="nav-letter" href="./login/signinsignup.html" id="sign_in_btn">SIGN IN</a>
                     </li>
-                    <li style="visibility: hidden;" class="nav-link">
+                    <li id='name' class="nav-link">
+                        <a class="nav-letter" href="./login/signinsignup.html" id="sign_in_btn">NAME</a>
+                    </li>
+                    <li id='signout' style="visibility: hidden;" class="nav-link">
                         <a class="nav-letter" href="" id="log_out_btn">SIGN OUT</a>
                     </li>
                 </ul>
@@ -50,8 +55,28 @@ export default class NavBar extends HTMLElement {
         this.attachShadow({mode:'open'});
         this.shadowRoot.appendChild($template.content.cloneNode(true))
 
+        this.$signIn = this.shadowRoot.getElementById('signin')
+        this.$name = this.shadowRoot.getElementById('name')
+        this.$signOut = this.shadowRoot.getElementById('signout')
+
     }
 
+    async connectedCallback() {
+        // this.currentUser = await getCurrentUser()
+        // console.log(this.currentUser)
+        try {
+            this.currentUser = await getCurrentUser();
+            this.$signIn.style.display = none
+            this.$name.style.display = block
+            this.$name.innerHTML == this.currentUser.name
+            this.$signOut.style.display == block
+        } catch (error) {
+            this.$signIn.style.display = block
+            this.$name.style.display = none
+            this.$signOut.style.display = none
+        }
+        
+    }
     
 }
 

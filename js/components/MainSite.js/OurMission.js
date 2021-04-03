@@ -10,7 +10,7 @@ $template.innerHTML = /*html*/ `
         <div class="container-2" data-aos="fade-down">
             <h2 style="text-align: center; color: white; font-size: 30px;">One platform of dynamic features</h2>
             
-            <h4  style="  font-family: 'Poppins', sans-serif; text-align: center; color: white; font-size: 15px; margin-left: 60px; margin-right: 60px;">
+            <h4 id='text' style="  font-family: 'Poppins', sans-serif; text-align: center; color: white; font-size: 15px; margin-left: 60px; margin-right: 60px;">
                 Our targeted clients range from dynamic cities to developing regions in mountainous areas where
                 there is limited access to medical services and medicine. Remedia enables healthcare teams to order
                 digital content and services as easily as they do medications today. Patients can then access these
@@ -30,6 +30,10 @@ export default class OurMission extends HTMLElement {
         this.attachShadow({mode:'open'});
         this.shadowRoot.appendChild($template.content.cloneNode(true))
 
+        this.$text = this.shadowRoot.getElementById('text')
+    }
+
+    connectedCallback() {
     }
 }
 

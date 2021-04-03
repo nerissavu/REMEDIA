@@ -3,7 +3,7 @@ $template.innerHTML = /*html*/ `
 
     <link rel="stylesheet" href="../../../css/homepage.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>    
-    <nav-bar></nav-bar>
+    <nav-bar id='user-status'></nav-bar>
     <site-title></site-title>
     <br>
     <br>
@@ -17,6 +17,7 @@ $template.innerHTML = /*html*/ `
     <our-team></our-team>
     <br>
     <our-mission></our-mission>
+    <stories-list></stories-list>
     <br>
     <br>
     <br>
@@ -51,7 +52,8 @@ $template.innerHTML = /*html*/ `
     <br>
     <br>
     <br>
-    <br>     <br>
+    <br>     
+    <br>
     <br>
     <br>
     <br>
@@ -69,6 +71,20 @@ export default class HomePage extends HTMLElement {
         this.shadowRoot.appendChild($template.content.cloneNode(true))
 
     }
+
+    // async connectedCallback() {
+    //     try {
+    //         this.currentUser = await getCurrentUser();
+    //     } catch (error) {
+    //         router.navigate('/auth');
+    //     }
+
+        // listenCurrentUser((user) => {
+        //     this.$userActions.setAttribute('status', user.status);
+        // });
+    // }
 }
+
+
 
 window.customElements.define('home-page', HomePage)
