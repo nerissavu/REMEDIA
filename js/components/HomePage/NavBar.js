@@ -7,7 +7,7 @@ $template.innerHTML = /*html*/ `
     <nav class="nav">
         <div style="display:flex" class="nav-menu">
             <div class="nav-brand" style="display:flex; align-items:center">
-                <a style="display: block; padding: 0px;"href="#">
+                <a id="home-page-btn" style="display: block; padding: 0px;"href="#">
                     <img src="../../../assets/logo/rectangle.png" class="text-gray" id="logo"style="margin:0;height: 80%;width: 100%;">
                 </a>
             </div>
@@ -39,7 +39,7 @@ $template.innerHTML = /*html*/ `
                     <li id='name-block' class="nav-link">
                         <a id='name' class="nav-letter" href="#"></a>
                     </li>
-                    <li id='signout' class="nav-link">
+                    <li id='signout' class="nav-link" style="display: none">
                         <a class="nav-letter" href="#" id="sign-out-btn">SIGN OUT</a>
                     </li>
                 </ul>
@@ -54,6 +54,7 @@ export default class NavBar extends HTMLElement {
         this.attachShadow({mode:'open'});
         this.shadowRoot.appendChild($template.content.cloneNode(true))
 
+        this.$homePageBtn = this.shadowRoot.getElementById('home-page-btn')
         this.$aboutUs = this.shadowRoot.getElementById('about-us')
         this.$aboutUsBtn = this.shadowRoot.getElementById('about-us-btn')
         this.$advisory = this.shadowRoot.getElementById('advisory')
@@ -110,13 +111,19 @@ export default class NavBar extends HTMLElement {
             this.currentUser = await getCurrentUser();
             this.$signIn.style.display = 'none'
             this.$nameBlock.style.display = 'block'
+            console.log(this.currentUser.token)
             console.log(this.currentUser.name)
             this.$name.innerHTML = this.currentUser.name
             this.$signOut.style.display = 'block'
         } catch (error) {
+            console.log(error)
             this.$signIn.style.display = 'block'
             this.$name.style.display = 'none'
             this.$signOut.style.display = 'none'
+        }
+        this.$homePageBtn.onclick = (event) => {
+            event.preventDefault()
+            router.navigate('/homepage');
         }
         this.$aboutUs.onclick = (event) => {
             event.preventDefault()
@@ -149,12 +156,7 @@ export default class NavBar extends HTMLElement {
             localStorage.clear();
             signOut()
         }
-
-
     }
-
-
-    
 }
 
 window.customElements.define('nav-bar', NavBar)
