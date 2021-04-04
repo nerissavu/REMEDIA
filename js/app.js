@@ -20,8 +20,11 @@ import Footer from './components/HomePage/Footer.js'
 import StoriesSession from './components/Stories/StroriesSession.js'
 
 import AppointmentBooking from './components/Advisory/AppointmentBooking.js'
-import InputWrapperAdvisory from './components/Advisory/InputWrapper.js'
+import InputWrapperAdvisory from './components/Advisory/InputWrapperAdvisory.js'
+import InputWrapperPost from './components/Advisory/InputWrapperPost.js'
 import SelectWrapperAdvisory from './components/Advisory/SelectWrapper.js'
+import PostForm from './components/Advisory/PostForm.js'
+import PreviewImage from './components/Advisory/PreviewImage.js'
 
 import SigninSignup from './screens/SigninSignup.js'
 import HomePage from './screens/HomePage.js'

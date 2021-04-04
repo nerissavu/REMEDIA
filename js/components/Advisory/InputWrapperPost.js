@@ -9,18 +9,17 @@ $template.innerHTML = /*html*/ `
             outline: none;
             font-family: 'Poppins', sans-serif;
         }
-        #input {
-            display: block;
+
+        #input{
+            background: transparent;
+            border: 0px;
             width: 100%;
-            height: 40px;
-            border: 1px solid black;
-            border-radius: 3px;
-            padding: 0px;
-            font-size: 17px;
-            font-weight: 500;
+            color: #c5ecfd;
         }
-        ::placeholder {
-            color: red;
+        ::placeholder{
+            color: #c5ecfd;
+            font-size: 12px;
+
         }
 
         #error {
@@ -35,7 +34,7 @@ $template.innerHTML = /*html*/ `
     </div>
 `
 
-export default class InputWrapperAdvisory extends HTMLElement {
+export default class InputWrapperPost extends HTMLElement {
     constructor(){
         super();
         this.attachShadow({mode:'open'});
@@ -88,4 +87,4 @@ export default class InputWrapperAdvisory extends HTMLElement {
         }
     }
 }
-window.customElements.define('input-wrapper-advisory', InputWrapperAdvisory)
+window.customElements.define('input-wrapper-post', InputWrapperPost)

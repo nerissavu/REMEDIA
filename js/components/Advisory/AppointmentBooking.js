@@ -1,5 +1,5 @@
 import {require, validateEmail } from "../../../js/utils.js";
-import { register } from "../../../js/models/appointments.js";
+import { registerAppointment } from "../../../js/models/appointments.js";
 
 const $template = document.createElement('template');
 $template.innerHTML = /*html*/ `
@@ -79,11 +79,11 @@ $template.innerHTML = /*html*/ `
             <div class="page">
                 <div class="title">Meeting Details</div>
                 <div class="field">
-                    <div class="label">Scheduled Date</div>
+                    <div class="label">Scheduled Date Preference</div>
                     <input-wrapper-advisory id="scheduled-date" type="date"></input-wrapper-advisory>
                 </div>
                 <div class="field">
-                    <div class="label">Scheduled Time (GMT +7)</div>
+                    <div class="label">Scheduled Time Preference </div>
                     <input-wrapper-advisory id="scheduled-time" type="time"></input-wrapper-advisory>
                 </div>
                 <div class="field">
@@ -253,6 +253,8 @@ export default class AppointmentBooking extends HTMLElement {
                 ;
 
             if (isPassed) {
+                registerAppointment(name, dob, gender, email, phone, scheduledDate, scheduledTime, description, first, second, third)
+                console.log('hhhhh');
                 this.$bullet[this.current - 1].classList.add("active");
                 this.$progressCheck[this.current - 1].classList.add("active");
                 this.$progressText[this.current - 1].classList.add("active");
@@ -261,8 +263,6 @@ export default class AppointmentBooking extends HTMLElement {
                     alert("Your Form Successfully Signed up");
                     location.reload();
                 }, 800);
-                // register(name, dob, gender, email, phone, scheduledDate, scheduledTime, description, first, second, third)
-                console.log('hhhhh');
             }
         }
     }
