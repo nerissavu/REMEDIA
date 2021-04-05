@@ -1,22 +1,44 @@
+import { getCurrentUser, getUserByToken } from "../../models/users.js";
+
+
 const $template = document.createElement('template');
 $template.innerHTML = /*html*/ `
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>    
-    <form class="wrapper">
+    <form id="post-form" class="wrapper">
         <div class="title">
             <h1>Create Post</h1>
         </div>
         <div class="contact-form">
             <div class="input-fields">
-                <input style="display:none" type="file" id="file" class="input" placeholder="Image" accept="image/png, image/jpeg"> 
-                <label for="file">
-                    Choose an image
-                </label>
+                <div class="container">
+                    <div class="wrapper-preview">
+                        <div class="image">
+                            <img src="" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="icon">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <div class="text">
+                                No file chosen, yet!
+                            </div>
+                        </div>
+                        <div id="cancel-btn-preview-image">
+                            <i class="fas fa-times"></i>
+                        </div>
+                        <div class="file-name">
+                            File name here
+                        </div>
+                    </div>
+                    <input id="default-btn" type="file" hidden accept="image/png, image/jpeg">
+                </div>
+                <label id="custom-btn" for="default-btn"> Choose an image </label>
                 <input-wrapper-post type="text" class="input" placeholder="Post Title"> </input-wrapper-post>
             </div>
             <div class="msg">
-                <textarea placeholder="Post Content"></textarea>
-            <button class="btn">send</div>
+                <textarea-wrapper placeholder="Post Content"></textarea-wrapper>
+            <button type="submit" class="btn">send</div>
             </button>
         </div>
     </form>
@@ -65,8 +87,8 @@ $template.innerHTML = /*html*/ `
             width: 48%;
         }
 
-        .input-fields .input,
-        .msg textarea{
+        .input-fields .input
+        {
             margin: 10px 0;
             background: transparent;
             border: 0px;
@@ -75,7 +97,7 @@ $template.innerHTML = /*html*/ `
             color: #c5ecfd;
             width: 100%;
         }
-        
+
         label{
             margin: 10px 0;
             background: transparent;
@@ -86,16 +108,10 @@ $template.innerHTML = /*html*/ `
             width: 100%;
             font-family: 'Poppins', sans-serif;
             font-size: 12px;
-            padding-top: 25px;
+            cursor:pointer;
 
         }
 
-        .msg textarea{
-            height: 195px;
-            margin: 20px 0;
-            resize: none;
-
-        }
 
         ::-webkit-input-placeholder {
         /* Chrome/Opera/Safari */
@@ -125,13 +141,101 @@ $template.innerHTML = /*html*/ `
             .contact-form{
                 flex-direction: column;
             }
-            .msg textarea{
+            .msg textarea-wrapper{
                 height: 80px;
             }
             .input-fields,
             .msg{
                 width: 100%;
             }
+        }
+
+        .wrapper-preview #cancel-btn i{
+            position: absolute;
+            font-size: 20px;
+            right: 15px;
+            top: 15px;
+            color: #9658fe;
+            cursor: pointer;
+            display: none;
+        }
+        .wrapper-preview.active:hover #cancel-btn i{
+            display: block;
+        }
+        .wrapper-preview #cancel-btn i:hover{
+            color: #e74c3c;
+        }
+/* preview image*/
+        .container{
+            display: grid;
+            place-items: center;
+            text-align: center;
+            padding-top: 30px;
+        }
+        .wrapper-preview{
+            position: relative;
+            width: 100%;
+            border-radius: 10px;
+            background: #fff;
+            border: 2px dashed #000080;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            height: 135px;
+        }
+        .wrapper-preview.active{
+            border: none;
+        }
+        .wrapper-preview .image{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .wrapper-preview img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+        .wrapper-preview .icon{
+            font-size: 50px;
+            color: #000080;
+        }
+        .wrapper-preview .text{
+            font-size: 12px;
+            font-weight: 500;
+            color: #5B5B7B;
+        }
+        .wrapper-preview #cancel-btn-preview-image i{
+            position: absolute;
+            font-size: 20px;
+            right: 15px;
+            top: 15px;
+            color: #9658fe;
+            cursor: pointer;
+            display: none;
+        }
+        .wrapper-preview.active:hover #cancel-btn-preview-image i{
+            display: block;
+        }
+        .wrapper-preview #cancel-btn-preview-image i:hover{
+            color: #e74c3c;
+        }
+        .wrapper-preview .file-name{
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            padding: 8px 0;
+            font-size: 12px;
+            color: #fff;
+            display: none;
+            background: linear-gradient(to right, #3ab5b0 0%, #3d99be 31%, #56317a 100%);
+        }
+        .wrapper-preview.active:hover .file-name{
+            display: block;
         }
     </style>
 `
@@ -142,7 +246,52 @@ export default class PostForm extends HTMLElement {
         this.attachShadow({mode:'open'});
         this.shadowRoot.appendChild($template.content.cloneNode(true))
 
+        this.$wrapper = this.shadowRoot.querySelector(".wrapper-preview");
+        this.$fileName = this.shadowRoot.querySelector(".file-name");
+        this.$defaultBtn = this.shadowRoot.querySelector("#default-btn");
+        this.$customBtn = this.shadowRoot.querySelector("#custom-btn");
+        this.$cancelBtn = this.shadowRoot.querySelector("#cancel-btn-preview-image");
+        this.$img = this.shadowRoot.querySelector("img");
+
+        this.$postForm = this.shadowRoot.querySelector("post-form");
+
     }
+
+    connectedCallback() {
+        let regExp = /[0-9a-zA-Z\^\&\'\@\{\}\[\]\,\$\=\!\-\#\(\)\.\%\+\~\_ ]+$/;
+        this.$customBtn.onclick = (event) => {
+            event.preventDefault();
+            this.$defaultBtn.click();
+        }
+        this.$defaultBtn.onchange = (event) => {
+            event.preventDefault();
+            let file = event.target.files[0];
+            if(file){
+                let reader = new FileReader();
+                reader.onload = (event) => {
+                    event.preventDefault();
+                    let result = reader.result;
+                    this.$img.setAttribute('src', result);
+                    this.$wrapper.classList.add("active");
+                }
+                this.$cancelBtn.onclick = (event) => {
+                    event.preventDefault();
+                    this.$img.setAttribute('src', "");
+                    this.$wrapper.classList.remove("active");
+                }
+                reader.readAsDataURL(file);
+            }
+            if(file){
+                let valueStore = file.name.match(regExp);
+                this.$fileName.textContent = valueStore;
+            }
+        }
+        this.$postForm.onsubmit = (event) => {
+            event.preventDefault();
+
+        }
+    }
+
 
 
 

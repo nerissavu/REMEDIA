@@ -3,7 +3,7 @@ import { registerAppointment } from "../../../js/models/appointments.js";
 
 const $template = document.createElement('template');
 $template.innerHTML = /*html*/ `
-<link rel="stylesheet" href="../../../css/advisory.css">
+<link rel="stylesheet" href="../../../css/appointmentbooking.css">
 <div id="appointment-booking" class="container">
     <header>APPOINTMENT BOOKING</header>
     <div class="progress-bar">
