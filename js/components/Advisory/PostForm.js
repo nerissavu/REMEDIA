@@ -1,4 +1,7 @@
 import { getCurrentUser, getUserByToken } from "../../models/users.js";
+import {require} from '../../utils.js'
+import {post} from "../../models/posts.js"
+
 
 
 const $template = document.createElement('template');
@@ -34,10 +37,10 @@ $template.innerHTML = /*html*/ `
                     <input id="default-btn" type="file" hidden accept="image/png, image/jpeg">
                 </div>
                 <label id="custom-btn" for="default-btn"> Choose an image </label>
-                <input-wrapper-post type="text" class="input" placeholder="Post Title"> </input-wrapper-post>
+                <input-wrapper-post id ="post-title" type="text" class="input" placeholder="Post Title"> </input-wrapper-post>
             </div>
             <div class="msg">
-                <textarea-wrapper placeholder="Post Content"></textarea-wrapper>
+                <textarea-wrapper id="post-content" placeholder="Post Content"></textarea-wrapper>
             <button type="submit" class="btn">send</div>
             </button>
         </div>
@@ -253,7 +256,10 @@ export default class PostForm extends HTMLElement {
         this.$cancelBtn = this.shadowRoot.querySelector("#cancel-btn-preview-image");
         this.$img = this.shadowRoot.querySelector("img");
 
-        this.$postForm = this.shadowRoot.querySelector("post-form");
+        this.$postForm = this.shadowRoot.getElementById("post-form");
+        this.$postTitle = this.shadowRoot.getElementById("post-title");
+        this.$defaultBtn = this.shadowRoot.getElementById("default-btn");
+        this.$postContent = this.shadowRoot.getElementById("post-content");
 
     }
 
@@ -286,10 +292,28 @@ export default class PostForm extends HTMLElement {
                 this.$fileName.textContent = valueStore;
             }
         }
-        this.$postForm.onsubmit = (event) => {
+        this.$postForm.onsubmit = async (event) => {
             event.preventDefault();
+            
+            let currentUser = await getCurrentUser();
+            console.log(currentUser)
 
+            let name = currentUser.name;
+            let date = new Date().toISOString()
+            console.log(date)
+            let postTitle  = this.$postTitle.value
+            let image = this.$defaultBtn.files[0]
+            console.log(image)
+            let postContent = this.$postContent.value
+
+            let isPassed = this.$postTitle.validate(require, "Input your name") &
+                this.$postContent.validate(require, "Input your DOB");
+            
+            if (isPassed) {
+                post(name, date, postTitle, image, postContent)
+                }
         }
+
     }
 
 
