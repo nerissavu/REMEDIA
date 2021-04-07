@@ -26,6 +26,7 @@ import SelectWrapperAdvisory from './components/Advisory/SelectWrapper.js'
 import TextareaWrapperAdvisory from './components/Advisory/TextareaWrapper.js'
 import PostForm from './components/Advisory/PostForm.js'
 import PostList from './components/Advisory/PostList.js'
+import PostContainer from './components/Advisory/PostContainer.js'
 
 import SigninSignup from './screens/SigninSignup.js'
 import HomePage from './screens/HomePage.js'

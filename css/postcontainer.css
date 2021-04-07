@@ -9,70 +9,81 @@
     font-size: 10px;
 
 }
-
-img{
-    height: 100%;
-    height: 30rem
-}
-
 body{
     width: 100%;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: blue;
-    padding: 0 1.5 rem;
+    padding: 0 30px
+}
+img{
+    height: 100%;
 }
 
 .blog-post{
     width: 100%;
-    max-width: 98rem;
-    padding: 5rem;
+    max-width: 1000px;
+    padding: 5px;
     background-color: aqua;
-    box-shadow: 0 1.4rem 8rem rgba(0,0,0,.2);
+    box-shadow: 0 1.4px 8px rgba(0,0,0,.2);
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    border-radius: 0.8rem; 
+    border-radius: 10px; 
 }
+
+/* .blog-post > * {
+    width: 48%;
+    position: relative;
+} */
 
 .blog-post-img{
-    height: 30rem;
-    transform: translateX(-8rem);
+    /* height: 3rem; */
+    transform: translateX(-80px);
     position: relative;
 }
-
 .blog-post-img img{
-    width: 100%;
     height: 100%;
+    width: 100%;
     object-fit: cover;
     display: block;
-    border-radius: .8rem;
+    border-radius: 10px;
+    border: 1px solid black
 }
 
 .blog-post-date span{
     display: block;
     color: rgba(0,0,0,.5);
-    font-size: 1.6rem;
+    font-size: 16px;
     font-weight: 600;
     margin: .5rem 0;
 }
 
+ .blog-post-title{
+    font-size: 20px;
+    margin: 10px 0 15px;
+    text-transform: uppercase;
+    color: blue ;
+}
+
+
 .blog-post-text{
-    margin-bottom: 3rem;
-    font-size: 1.4rem;
+    margin-bottom: 30px;
+    font-size: 12px;
     color: rbga(0,0,0,.7)
 }
 
+
 .blog-post-button{
     display: inline-block;
-    padding: 1.5rem 3rem;
+    padding: 10px 20px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    font-size: 1.2rem;
+    font-size: 12px;
     color: #fff;
     background-image: linear-gradient(to right, #3ab5b0 0%, #3d99be 31%, #56317a 100%); 
-    border-radius: 8rem;
+    border-radius: 100px;
     text-decoration: none;
     cursor: pointer;
 }
@@ -82,16 +93,17 @@ body{
 
 }
 
+
 @media screen and (max-width: 868px){
     .blog-post{
-        max-width: 70rem;
+        max-width: 700px;
     }
 }
 
 @media screen and (max-width: 768px){
     
     .blog-post{
-        padding: 2.5rem;
+        padding: 0 30px;
         flex-direction: column;
         margin: 3rem;
     }
@@ -99,6 +111,6 @@ body{
     .blog-post-img{
         min-width: 100%;
         max-width: 100%;
-        transform: translate(0, -8rem);
+        transform: translate(0, -20px);
     }
 }

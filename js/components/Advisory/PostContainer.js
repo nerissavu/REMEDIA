@@ -1,80 +1,66 @@
 const $template = document.createElement('template');
 $template.innerHTML = /*html*/ `
 
-    <link rel="stylesheet" href="../../../css/homepage.css">
+    <link rel="stylesheet" href="../../../css/postcontainer.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>    
-    <div class="post-content" data-aos="zoom-in" data-aos-delay="400">
-        <div class="post-image">
-            <div>
-                <img id="image" src="../../../assets/fact/prctm.png" class="img" alt="blog">
-            </div>
-            <div class="post-info flex-row">
-                <span style="color: white;">
-                    <i class="fas fa-user "></i>
-                    <span id="user">Admin</span>
-                </span>
-                <span style="color: white;">
-                    <i class="fas fa-calendar-alt "></i>
-                    <span id="date">July 29,2019</span>
-                </span>
-            </div>
+    <div class="blog-post">
+        <div class="blog-post-img">
+            <img id="post-image" src="../../../assets/profile/profile-cards-bg.png">
         </div>
-        <div class="post-title">
-            <a id="title" class="title" href="./7factsaboutparacetamol.html"></a>
-            <p id="preview-content" style="white-space: pre-line ; ">
-
-            </p>
-            <button class="btn post-btn"><a id="link" style="color: white; font-size: medium;" href="./7factsaboutparacetamol.html">Read More
-                    &nbsp;&nbsp; <i class="fas fa-arrow-right"></i></a>
-            </button>
+        <div class="blog-post-info">
+            <div class="blog-post-date">
+                <span id ="post-author">Sunday</span>
+                <span id ="post-date">October 27 2019</span>
+            </div>
+            <h1 id="post-title" class="blog-post-title"> Hello</h1>
+            <p id="post-content" class="blog-post-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni recusandae voluptates tempore impedit totam non natus, nobis quis unde ad optio distinctio ipsa molestias incidunt. Excepturi deleniti culpa fugit totam tempora obcaecati repellat ex, animi dolores sequi odit, omnis eaque rem a, quaerat nesciunt quia sapiente quis ullam eligendi. Similique, fugit autem. Sequi alias tenetur eum minus a hic ea neque! Quibusdam laboriosam libero nostrum magnam qui cum repudiandae quos adipisci, necessitatibus a porro amet nemo asperiores, quam tempora ut aliquid voluptates inventore voluptas nihil rerum voluptatem esse commodi impedit. Illum assumenda voluptates illo mollitia, similique a eaque incidunt molestias.</p>
+            <a class="blog-post-button">Read more</a>
         </div>
     </div>
 `
 
-export default class FactContainer extends HTMLElement {
+export default class PostContainer extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({mode:'open'});
         this.shadowRoot.appendChild($template.content.cloneNode(true))
 
-        this.$image = this.shadowRoot.getElementById('image')
-        this.$user = this.shadowRoot.getElementById('user')
-        this.$date = this.shadowRoot.getElementById('date')
-        this.$title = this.shadowRoot.getElementById('title')
-        this.$previewContent = this.shadowRoot.getElementById('preview-content')
+        this.$postImage = this.shadowRoot.getElementById('post-image')
+        this.$postAuthor = this.shadowRoot.getElementById('post-author')
+        this.$postDate = this.shadowRoot.getElementById('post-date')
+        this.$postTitle = this.shadowRoot.getElementById('post-title')
+        this.$postContent = this.shadowRoot.getElementById('post-content')
 
     }
 
     static get observedAttributes() {
-        return ['image','user','date','title','preview-content'];
+        return ['image','author','date','title','content'];
     }
 
     attributeChangedCallback(attrName, oldValue, newValue) {
         switch(attrName) {
             case 'image':
-                this.$image.setAttribute('src', newValue)
-                break;
-
-            case 'user':
-                this.$user.innerHTML = newValue
+                this.$postImage.setAttribute('src', newValue)
                 break;
         
-            case 'date':
-                this.$date.innerHTML = newValue
+            case 'author':
+                this.$postAuthor.innerHTML = newValue
                 break;
 
+            case 'date':
+                this.$postDate.innerHTML = newValue
+                break
+
             case 'title':
-                this.$title.innerHTML = newValue
-                this.$title.setAttribute('href', newValue)
+                this.$postTitle.value = newValue
                 break
 
-            case 'preview-content':
-                this.$previewContent.innerHTML = newValue
+            case 'content':
+                this.$postContent.value = newValue
                 break
-
         }
 
     }   
 }
 
-window.customElements.define('fact-container', FactContainer)
+window.customElements.define('post-container', PostContainer)
