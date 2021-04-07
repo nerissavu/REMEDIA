@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
 * {
-    font-family: 'Poppins', sans-serif;
-    letter-spacing: 4px;
+
 }
 
 #post-btn-container{
@@ -22,6 +21,8 @@
     position: relative;
     z-index: 1;
     background-color: black;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 4px;
 
 }
 

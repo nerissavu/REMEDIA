@@ -31,7 +31,6 @@ $template.innerHTML = /*html*/ `
     <br>
     <br>
     <appointment-booking></appointment-booking>
-    <post-form style="display: none"></post-form>
     <foo-ter></foo-ter>
 `
 

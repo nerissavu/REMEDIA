@@ -41,8 +41,10 @@ $template.innerHTML = /*html*/ `
             </div>
             <div class="msg">
                 <textarea-wrapper id="post-content" placeholder="Post Content"></textarea-wrapper>
-            <button type="submit" class="btn">send</div>
-            </button>
+            <div class="button-container" >
+                <button type="submit" class="btn">Send</div></button>
+                <button id="cancel-btn-post" class=" cancel btn">Cancel</div></button>
+            </div>
         </div>
     </form>
 
@@ -60,13 +62,14 @@ $template.innerHTML = /*html*/ `
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translateX(-50%);
             width: 100%;
             max-width: 550px;
             background: rgba(0,0,0,0.8);
             padding: 30px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            z-index: 1000;
         }
 
         .wrapper .title h1{
@@ -128,6 +131,10 @@ $template.innerHTML = /*html*/ `
         color: #c5ecfd;
         }
 
+        .button-container{
+            display:inline-grid;
+            text-align: center;
+        }
         .btn {
             background: #39b7dd;
             text-align: center;
@@ -136,7 +143,7 @@ $template.innerHTML = /*html*/ `
             color: #fff;
             cursor: pointer;
             text-transform: uppercase;
-            width: 100%;
+            width: 100px;
         }
 
         @media screen and (max-width: 600px){
@@ -259,7 +266,21 @@ export default class PostForm extends HTMLElement {
         this.$postTitle = this.shadowRoot.getElementById("post-title");
         this.$defaultBtn = this.shadowRoot.getElementById("default-btn");
         this.$postContent = this.shadowRoot.getElementById("post-content");
+        this.$cancelBtnPost = this.shadowRoot.getElementById("cancel-btn-post");
 
+    }
+
+    static get observedAttributes() {
+        return ['y'];
+    }
+
+    attributeChangedCallback(attrName, oldValue, newValue) {
+        switch (attrName) {
+
+            case 'y': 
+                this.$postForm.style.transform = `translate(-50%,${newValue}px)`;
+                break;
+        }
     }
 
     connectedCallback() {
@@ -293,32 +314,36 @@ export default class PostForm extends HTMLElement {
             }
         }
         this.$postForm.onsubmit = async (event) => {
-            event.preventDefault();
 
             try {
                 this.currentUser = await getCurrentUser();
+
+                let currentUser = await getCurrentUser();
+                console.log(currentUser)
+    
+                let isPassed = this.$postTitle.validate(require, "Input your Post Title") &
+                    this.$postContent.validate(require, "Input your Post Content");
+                
+                if (isPassed) {
+                    let name = currentUser.name;
+                    let date = new Date().toISOString()
+                    let postTitle  = this.$postTitle.value
+                    let image = this.$defaultBtn.files[0]
+                    let image_name = Date.now() + image.name
+                    let postContent = this.$postContent.value
+                    post(name, date, postTitle, image, image_name, postContent)
+                    console.log('passed')
+                    this.$postForm.style.display = 'none'
+                    }
             } catch (error) {
                 alert('Please sign in to your account to post a new thread')
             }
-            
-            let currentUser = await getCurrentUser();
-            console.log(currentUser)
-
-            let isPassed = this.$postTitle.validate(require, "Input your Post Title") &
-                this.$postContent.validate(require, "Input your Post Content");
-            
-            if (isPassed) {
-                let name = currentUser.name;
-                let date = new Date().toISOString()
-                let postTitle  = this.$postTitle.value
-                let image = this.$defaultBtn.files[0]
-                let image_name = Date.now() + image.name
-                let postContent = this.$postContent.value
-                post(name, date, postTitle, image, image_name, postContent)
-                console.log('passed')
-                this.$postForm.style.display = 'none'
-                }
         }
+        this.$cancelBtnPost.onclick = (event) => {
+            event.preventDefault();
+            this.$postForm.style.display = 'none'
+        }
+
 
     }
 
