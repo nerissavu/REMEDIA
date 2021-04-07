@@ -29,8 +29,8 @@ router.on('/druglibrary', function(){
     $app.innerHTML = '<drug-library-screen></drug-library-screen>'
 }).resolve();
 
-// router.on(function(){
-//     router.navigate('/homepage')
-// }).resolve();
+router.on(function(){
+    router.navigate('/homepage')
+}).resolve();
 
 window.router = router;

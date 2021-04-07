@@ -16,7 +16,7 @@ $template.innerHTML = /*html*/ `
         }
 
         textarea{
-            margin: 10px 0;
+            margin-top: 20px ;
             background: transparent;
             border: 0px;
             border-bottom: 2px solid #c5ecfd;
@@ -24,7 +24,6 @@ $template.innerHTML = /*html*/ `
             color: #c5ecfd;
             width: 100%;
             height: 195px;
-            margin: 20px 0;
             resize: none;
             font-size: 12px;
         }
@@ -34,6 +33,15 @@ $template.innerHTML = /*html*/ `
             color: #c5ecfd;
 
         }
+
+        #error {
+            color: red; 
+            text-align: left;
+            font-size: 10px;
+            margin-bottom: 20px;
+
+        }
+
     </style>
 `;
 

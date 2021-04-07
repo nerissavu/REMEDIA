@@ -15,21 +15,30 @@ $template.innerHTML = /*html*/ `
             border: 0px;
             width: 100%;
             color: #c5ecfd;
+
         }
         ::placeholder{
             color: #c5ecfd;
             font-size: 12px;
+            padding-left: 10px;
 
         }
+        #style{
+            border-bottom: 2px solid #c5ecfd;
+            padding-top: 10px;
+            padding-right:-5px;
 
+        }
         #error {
             color: red; 
             text-align: left;
-            font-size: 10px
+            font-size: 10px;
+            padding-top: 5px
         }
     </style>
     <div class="form-group">
         <input type = 'text' id='input' class='form-control' placeholder = ''>
+        <div id="style"></div>
         <div id='error'></div>
     </div>
 `

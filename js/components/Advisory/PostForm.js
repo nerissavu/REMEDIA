@@ -95,8 +95,7 @@ $template.innerHTML = /*html*/ `
             margin: 10px 0;
             background: transparent;
             border: 0px;
-            border-bottom: 2px solid #c5ecfd;
-            padding: 10px;
+            padding-top: 10px;
             color: #c5ecfd;
             width: 100%;
         }
@@ -288,29 +287,36 @@ export default class PostForm extends HTMLElement {
                 reader.readAsDataURL(file);
             }
             if(file){
-                let valueStore = file.name.match(regExp);
+                const valueStore = file.name.match(regExp);
                 this.$fileName.textContent = valueStore;
+                console.log(valueStore)
             }
         }
         this.$postForm.onsubmit = async (event) => {
             event.preventDefault();
+
+            try {
+                this.currentUser = await getCurrentUser();
+            } catch (error) {
+                alert('Please sign in to your account to post a new thread')
+            }
             
             let currentUser = await getCurrentUser();
             console.log(currentUser)
 
-            let name = currentUser.name;
-            let date = new Date().toISOString()
-            console.log(date)
-            let postTitle  = this.$postTitle.value
-            let image = this.$defaultBtn.files[0]
-            console.log(image)
-            let postContent = this.$postContent.value
-
-            let isPassed = this.$postTitle.validate(require, "Input your name") &
-                this.$postContent.validate(require, "Input your DOB");
+            let isPassed = this.$postTitle.validate(require, "Input your Post Title") &
+                this.$postContent.validate(require, "Input your Post Content");
             
             if (isPassed) {
-                post(name, date, postTitle, image, postContent)
+                let name = currentUser.name;
+                let date = new Date().toISOString()
+                let postTitle  = this.$postTitle.value
+                let image = this.$defaultBtn.files[0]
+                let image_name = Date.now() + image.name
+                let postContent = this.$postContent.value
+                post(name, date, postTitle, image, image_name, postContent)
+                console.log('passed')
+                this.$postForm.style.display = 'none'
                 }
         }
 

@@ -13,7 +13,7 @@ $template.innerHTML = /*html*/ `
                     member-img = "../../../assets/profile/haily.jpg"
                     name="Nguyen Hai Ly" 
                     position ="Founder" 
-                    about="Ly is a student at Hanoi - Amsterdam High School"
+                    about="Hai Ly is a student at Hanoi - Amsterdam High School"
                     facebook ="https://www.facebook.com/hailyngx/"
                     linkedin = "https://www.instagram.com/haily.ngx/"
                     email = "mailto: nguyenhaily.ams@gmail.com"
@@ -24,18 +24,7 @@ $template.innerHTML = /*html*/ `
                     member-img = "../../../assets/profile/ngavu.jpg"
                     name="Vu Thu Nga" 
                     position ="Founder" 
-                    about="Nga is a student at Hanoi - Amsterdam High School"
-                    facebook ="https://www.facebook.com/ngavucolennnn/"
-                    linkedin = "https://www.instagram.com/haily.ngx/"
-                    email = "mailto: vuthunga2002@gmail.com"
-                    >
-                </profile-container>
-
-                <profile-container 
-                    member-img = "../../../assets/profile/ngavu.jpg"
-                    name="Vu Thu Nga" 
-                    position ="Founder" 
-                    about="Nga is a student at Hanoi - Amsterdam High School"
+                    about="Thu Nga is a student at Hanoi - Amsterdam High School"
                     facebook ="https://www.facebook.com/ngavucolennnn/"
                     linkedin = "https://www.instagram.com/haily.ngx/"
                     email = "mailto: vuthunga2002@gmail.com"
