@@ -21,7 +21,9 @@ export function getDataFromDoc(doc) {
 }
 
 export function getDataFromDocs(docs) {
+    console.log(docs)
     return docs.map((doc) => {
+        console.log(doc)
         return getDataFromDoc(doc);
     });
 }

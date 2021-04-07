@@ -42,6 +42,7 @@ img{
     /* height: 3rem; */
     transform: translateX(-80px);
     position: relative;
+    flex: 3
 }
 .blog-post-img img{
     height: 100%;
@@ -50,6 +51,10 @@ img{
     display: block;
     border-radius: 10px;
     border: 1px solid black
+    
+}
+.blog-post-info{
+    flex: 7;
 }
 
 .blog-post-date span{

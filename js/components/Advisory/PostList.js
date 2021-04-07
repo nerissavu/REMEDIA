@@ -1,3 +1,4 @@
+import { listenPosts } from "../../models/posts.js";
 import { getCurrentUser, getUserByToken } from "../../models/users.js";
 
 
@@ -10,8 +11,6 @@ $template.innerHTML = /*html*/ `
         <button id="post-btn">POST NEW THREAD!</button>
     </div>
     <div id="post-list">
-        <post-container ></post-container>
-        <post-container content="bla bla bla" ></post-container>
     </div>
 
     `
@@ -28,26 +27,6 @@ export default class PostList extends HTMLElement {
 
     static get observedAttributes() {
         return ['posts'];
-    }
-
-    attributeChangedCallback(attrName, oldValue, newValue) {
-        // newValue: string (json)
-        if(attrName == 'messages') {
-            let posts = JSON.parse(newValue);
-            this.$postList.innerHTML = '';
-            
-            for(let post of posts) {
-                // tạo và gán thuộc tính cho message-container -> <message-container content=""></message-container>
-                let $postContainer = document.createElement('post-container');
-                $postContainer.setAttribute('image', post.image);
-                $postContainer.setAttribute('date', post.date);
-                $postContainer.setAttribute('author', post.author);
-                $postContainer.setAttribute('title', post.title);
-                $postContainer.setAttribute('content', post.content);
-                // thêm message-container vào list
-                this.$postList.appendChild($postContainer);
-            }
-        }
     }
 
     connectedCallback() {
@@ -67,6 +46,25 @@ export default class PostList extends HTMLElement {
             }
 
         }
+
+        listenPosts((data)=> {
+            console.log(data)
+            for(let post of data) {
+                console.log(data[0])
+                // tạo và gán thuộc tính cho post-container -> <post-container content=""></post-container>
+                let $postContainer = document.createElement('post-container');
+                // $postContainer.setAttribute('image', post.image);
+                $postContainer.setAttribute('date', post.date);
+                $postContainer.setAttribute('author', post.author);
+                if(post.image != null){
+                    $postContainer.setAttribute('image', post.image);
+                }
+                $postContainer.setAttribute('title', post.postTitle);
+                $postContainer.setAttribute('content', post.postContent);
+                // thêm message-container vào list
+                this.$postList.appendChild($postContainer);
+            }
+        })
     }
 }
 

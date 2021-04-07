@@ -36,7 +36,7 @@ $template.innerHTML = /*html*/ `
                     </div>
                     <input id="default-btn" type="file" hidden accept="image/png, image/jpeg">
                 </div>
-                <label id="custom-btn" for="default-btn"> Choose an image </label>
+                <label id="custom-btn" for="default-btn"> Choose an image (not required) </label>
                 <input-wrapper-post id ="post-title" type="text" class="input" placeholder="Post Title"> </input-wrapper-post>
             </div>
             <div class="msg">
@@ -319,30 +319,34 @@ export default class PostForm extends HTMLElement {
             }
         }
         this.$postForm.onsubmit = async (event) => {
-
+            event.preventDefault();
             try {
                 this.currentUser = await getCurrentUser();
 
                 let currentUser = await getCurrentUser();
                 console.log(currentUser)
-    
+
                 let isPassed = this.$postTitle.validate(require, "Input your Post Title") &
-                    this.$postContent.validate(require, "Input your Post Content");
-                
+                this.$postContent.validate(require, "Input your Post Content");
+            
                 if (isPassed) {
-                    let name = currentUser.name;
-                    let date = new Date().toISOString()
+                    let author = currentUser.name;
+                    let date = new Date(Date.now()).toString()
                     let postTitle  = this.$postTitle.value
                     let image = this.$defaultBtn.files[0]
                     let image_name = Date.now() + image.name
                     let postContent = this.$postContent.value
-                    post(name, date, postTitle, image, image_name, postContent)
+                    post(author, date, postTitle, image, image_name, postContent)
                     console.log('passed')
                     this.$postForm.style.display = 'none'
-                    }
+                }
+    
+
             } catch (error) {
                 alert('Please sign in to your account to post a new thread')
             }
+
+
         }
         this.$cancelBtnPost.onclick = (event) => {
             event.preventDefault();

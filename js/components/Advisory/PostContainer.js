@@ -14,7 +14,7 @@ $template.innerHTML = /*html*/ `
             </div>
             <h1 id="post-title" class="blog-post-title"> Hello</h1>
             <p id="post-content" class="blog-post-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni recusandae voluptates tempore impedit totam non natus, nobis quis unde ad optio distinctio ipsa molestias incidunt. Excepturi deleniti culpa fugit totam tempora obcaecati repellat ex, animi dolores sequi odit, omnis eaque rem a, quaerat nesciunt quia sapiente quis ullam eligendi. Similique, fugit autem. Sequi alias tenetur eum minus a hic ea neque! Quibusdam laboriosam libero nostrum magnam qui cum repudiandae quos adipisci, necessitatibus a porro amet nemo asperiores, quam tempora ut aliquid voluptates inventore voluptas nihil rerum voluptatem esse commodi impedit. Illum assumenda voluptates illo mollitia, similique a eaque incidunt molestias.</p>
-            <a class="blog-post-button">Read more</a>
+            <a class="blog-post-button">Comment</a>
         </div>
     </div>
 `
@@ -52,11 +52,12 @@ export default class PostContainer extends HTMLElement {
                 break
 
             case 'title':
-                this.$postTitle.value = newValue
+                this.$postTitle.innerHTML = newValue
                 break
 
             case 'content':
-                this.$postContent.value = newValue
+                this.$postContent.innerHTML = newValue
+                console.log(newValue)
                 break
         }
 
