@@ -12,7 +12,7 @@ $template.innerHTML = /*html*/ `
         }
     </style>
 
-    <link rel="stylesheet" href="../../../css/homepage.css">
+    <link rel="stylesheet" href="../../../css/navbarfooter.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>    
     <nav-bar id='user-status' active="1"></nav-bar>
     <site-title></site-title>
@@ -27,10 +27,12 @@ $template.innerHTML = /*html*/ `
     <br>
     <br>
     <br>
+    <h1 class="heading">Welcome To Our Community</h1>
     <post-list>
     </post-list>
     <br>
     <br>
+    <h1 class="heading">Appointment Booking Service</h1>
     <appointment-booking></appointment-booking>
     <foo-ter></foo-ter>
 `

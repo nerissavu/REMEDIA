@@ -6,7 +6,7 @@ $template.innerHTML = /*html*/ `
     <div class="newsletter" data-aos="fade-up" data-aos-delay="300">
     <h2>Newsletter</h2>
     <form class="form-element">
-        <input type="text" class="input-element" placeholder="Email">
+        <input id="newsletter" type="text" class="input-element" placeholder="Email">
         <button type="submit" class="btn form-btn">Subscribe</button>
     </form>
 </div>

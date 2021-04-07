@@ -45,8 +45,8 @@
 }
 .form-outer form .page .title{
   text-align: left;
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 22px;
+  font-weight: 600;
 }
 .form-outer form .page .field{
   width: 330px;
@@ -58,7 +58,8 @@
 form .page .field .label{
   position: absolute;
   top: -30px;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 400;
 }
 form .page .field input-wrapper-advisory{
   height: 100%;

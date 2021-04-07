@@ -6,13 +6,14 @@ $template.innerHTML = /*html*/ `
 
     <link rel="stylesheet" href="../../../css/postlist.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>  
-    <div id="post-list">
-        <post-container ></post-container>
-        <post-container ></post-container>
-    </div>
     <div id="post-btn-container">
         <button id="post-btn">POST NEW THREAD!</button>
     </div>
+    <div id="post-list">
+        <post-container ></post-container>
+        <post-container content="bla bla bla" ></post-container>
+    </div>
+
     `
 
 export default class PostList extends HTMLElement {
