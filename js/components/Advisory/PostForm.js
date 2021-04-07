@@ -41,9 +41,10 @@ $template.innerHTML = /*html*/ `
             </div>
             <div class="msg">
                 <textarea-wrapper id="post-content" placeholder="Post Content"></textarea-wrapper>
-            <div class="button-container" >
-                <button type="submit" class="btn">Send</div></button>
-                <button id="cancel-btn-post" class=" cancel btn">Cancel</div></button>
+                <div class="button-container" >
+                    <button type="submit" class="btn">Send</button>
+                    <button id="cancel-btn-post" class=" cancel btn">Cancel</button>
+                </div>
             </div>
         </div>
     </form>
@@ -132,8 +133,9 @@ $template.innerHTML = /*html*/ `
         }
 
         .button-container{
-            display:inline-grid;
+            display:flex;
             text-align: center;
+            justify-content: center;
         }
         .btn {
             background: #39b7dd;
@@ -143,9 +145,12 @@ $template.innerHTML = /*html*/ `
             color: #fff;
             cursor: pointer;
             text-transform: uppercase;
-            width: 100px;
+            width: 100%;
+            margin: 0 10px
         }
-
+        .cancel{
+            background-color: grey
+        }
         @media screen and (max-width: 600px){
             .contact-form{
                 flex-direction: column;
