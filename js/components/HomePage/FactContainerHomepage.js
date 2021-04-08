@@ -8,6 +8,7 @@ $template.innerHTML = /*html*/ `
             <div>
                 <img id="image" src="../../../assets/fact/prctm.png" class="img" alt="blog">
             </div>
+    
             <div class="post-info flex-row">
                 <span style="color: white;">
                     <i class="fas fa-user "></i>

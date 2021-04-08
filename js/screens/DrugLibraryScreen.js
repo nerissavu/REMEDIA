@@ -13,7 +13,24 @@ $template.innerHTML = /*html*/ `
     <br>
     <br>
     <br>
-    
+    <drug-container></drug-container>
+    <game-container 
+    image = "../../../assets/game/game.png"
+    title = "Doctor Run"
+    content ="After a long day going through this informative website, you might get intoxicated by the massive amount of education we deliver. Now get a life with this fun COVID-19-themed game."
+    date ="20"
+    month="January"
+    src="../../../game-project/index.html"
+    ></game-container>
+
+    <game-container 
+    image = "../../../assets/game/quiz.png"
+    title = "Remedia Quiz"
+    content ="Based on the information this website provides for you, absorb it yourself and compete in this game with us to test your knowledge. In this quiz, you have to answer 5 questions about medicine. Good luck!"
+    date ="20"
+    month="January"
+    src="../../../start.html"
+    ></game-container>
     <foo-ter></foo-ter>
 `
 

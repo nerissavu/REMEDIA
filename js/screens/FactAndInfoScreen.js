@@ -13,6 +13,10 @@ $template.innerHTML = /*html*/ `
     <br>
     <br>
     <br>
+    <art-mag></art-mag>
+    <video-container></video-container>
+    <info-graphics></info-graphics>
+    <fact-container-2></fact-container-2>
     <foo-ter></foo-ter>
 `
 

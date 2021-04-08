@@ -1,0 +1,7 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+.elg.im	TRUE	/	FALSE	1999999999	__cfduid	d8c818be7dedaac47704b9c72d1a540b21594824279
+cdn.elg.im	TRUE	/	FALSE	1999999999	SameSite	Lax
+cdn.taboola.com	TRUE	/	FALSE	1999999999	abLdr	4
+cdn.taboola.com	TRUE	/	FALSE	1999999999	SameSite	None
+

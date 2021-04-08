@@ -59,6 +59,7 @@ $template.innerHTML = /*html*/ `
     <br>
     <br>
     <br>
+    <request-form></request-form>
     <foo-ter></foo-ter>
 `
 
