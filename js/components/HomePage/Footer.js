@@ -1,3 +1,5 @@
+import {newsletter} from '../../models/newsletters.js'
+
 const $template = document.createElement('template');
 $template.innerHTML = /*html*/ `
 
@@ -15,10 +17,10 @@ $template.innerHTML = /*html*/ `
                 style="display:flex; flex-direction:column; align-items:center;">
                 <h2>Newsletter</h2>
                 <p style=" font-size: x-small; font-weight: bolder">Stay update with our latest</p>
-                <div class="form-element">
-                    <input type="text" placeholder="Email"><span id="pointer"><i
-                            class="fas fa-chevron-right"></i></span>
-                </div>
+                <form id="newsletter-form" class="form-element">
+                    <input id="newsletter" type="text" placeholder="Email">
+                    <button id="pointer"><i class="fas fa-chevron-right"></i></button>
+                </form>
             </div>
             <div class="instagram" data-aos="fade-left" data-aos-delay="200"
                 style="display:flex; flex-direction:column; align-items:center;">
@@ -76,6 +78,21 @@ export default class Footer extends HTMLElement {
         this.attachShadow({mode:'open'});
         this.shadowRoot.appendChild($template.content.cloneNode(true))
 
+        this.$newsLetterForm = this.shadowRoot.getElementById('newsletter-form')
+        this.$newsLetter = this.shadowRoot.getElementById('newsletter')
+    }
+
+    connectedCallback() {
+        this.$newsLetterForm.onsubmit = (event) => {
+            event.preventDefault();
+            let email = this.$newsLetter.value
+
+            if( email == ""){
+                alert('Please input your email')
+            } else {
+                newsletter(email)
+            }
+        }
     }
 }
 

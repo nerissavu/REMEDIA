@@ -11,13 +11,17 @@ import OurTeam from './components/HomePage/OurTeam.js'
 import OurMission from './components/HomePage/OurMission.js'
 import StoryContainer from './components/HomePage/StoryContainer.js'
 import StoriesList from './components/HomePage/StoriesList.js'
-import FactContainer from './components/HomePage/FactContainer.js'
+import FactContainerHomepage from './components/HomePage/FactContainerHomepage.js'
 import InfographicContainer from './components/HomePage/InfographicContainer.js'
 import Newsletter from './components/HomePage/NewsLetter.js'
 import FactAndInfo from './components/HomePage/FactAndInfo.js'
 import Footer from './components/HomePage/Footer.js'
 
 import StoriesSession from './components/Stories/StroriesSession.js'
+import PopularPosts from './components/Stories/PopularPosts.js'
+
+import PostsSession from './components/FullPosts/PostsSession.js'
+import SevenFactsAboutParacetamol from './screens/Posts/SevenFactsAboutParacetamol.js'
 
 import AppointmentBooking from './components/Advisory/AppointmentBooking.js'
 import InputWrapperAdvisory from './components/Advisory/InputWrapperAdvisory.js'

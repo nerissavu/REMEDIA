@@ -1,4 +1,3 @@
-//chưa có hiệu ứng
 
 const $template = document.createElement('template');
 $template.innerHTML = /*html*/ `
@@ -11,7 +10,7 @@ $template.innerHTML = /*html*/ `
 
         <div class="posts">
             <h1 class="heading">Facts</h1>
-            <fact-container 
+            <fact-container-homepage 
             image='../../../assets/story/weightlosspill.jpg'
             user='Admin'
             date='January 14,2019'
@@ -22,9 +21,9 @@ $template.innerHTML = /*html*/ `
             Weight-loss pills — prescription drugs, nonprescription drugs, herbal products or other dietary supplements — are all, at best, tools that may help with weight loss. But there is relatively little research about these products. The best studied of these are prescription weight-loss drugs.
          
             "
-            ></fact-container>
+            ></fact-container-homepage>
             <hr>
-            <fact-container
+            <fact-container-homepage
             image='../../../assets/story/story1.jpg'
             user='Admin'
             date='June 20,2020'
@@ -34,10 +33,10 @@ $template.innerHTML = /*html*/ `
 
             With few treatment options, doctors turned to a familiar intervention: broad-spectrum antibiotics, the shot-in-the-dark medications often used against bacterial infections that cannot be immediately identified. They knew antibiotics are not effective against viruses, but they were desperate, and they feared the patients could be vulnerable to life-threatening secondary bacterial infections as well.
             "
-            ></fact-container>
+            ></fact-container-homepage>
             <hr>
 
-            <fact-container
+            <fact-container-homepage
             image='../../../assets/story/story3.jpg'
             user='Admin'
             date='June 20,2020'
@@ -50,7 +49,7 @@ $template.innerHTML = /*html*/ `
             On April 10 the government had directed the Ministry of Health to halt exports of drugs like immunoglobulin 5 percent, vancomycin 500 mg, meropenem 500 mg, ceftriaxone, levotloxacin 250mg/50 ml, and ceftazidime to ensure enough supplies for domestic use.
 
             "
-            ></fact-container>
+            ></fact-container-homepage>
 
             <!--pagination-->
 
@@ -68,37 +67,7 @@ $template.innerHTML = /*html*/ `
         <!--FACTS & VIDEO-->
         <!--INFOGRAPHICS-->
 
-
-        <aside class="sidebar">
-            <div class="popular-post">
-                <h1 class="heading">Popular Posts</h1>
-                <infographic-container
-                image='../../../assets/story/overdose.jpg'
-                date='January 14,2020'
-                title='More than 2,000 Australians a year dying from drug overdoses'
-                ></infographic-container>
-
-                <infographic-container
-                image='../../../assets/story/supplement.jpg'
-                date='July 29,2020'
-                title='Vietnamese pharmacy firms cash in on nutritional supplements, brokers say'
-                ></infographic-container>
-
-                <infographic-container
-                image='../../../assets/story/medicine.jpg'
-                date='March 14,2020'
-                title='What We Learned in 2019: Health and Medicine'
-                ></infographic-container>
-        
-                <infographic-container
-                image='../../../assets/story/how.jpg'
-                date='March 14,2020'
-                title='How Medicine Became the Stealth Family-Friendly Profession'
-                ></infographic-container>
-
-            </div>
-            <news-letter></news-letter>
-        </aside>
+        <popular-posts></popular-posts>
     </div>
 </section>
 

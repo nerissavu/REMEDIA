@@ -857,10 +857,10 @@ footer.footer .newsletter .form-element input{
 
 }
 
-footer.footer .newsletter .form-element span{
-    background:linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
-    padding: 0.5rem 0.67rem;
+footer.footer .newsletter .form-element button{
+    padding: 0 0.6rem;
     cursor: pointer;
+    height: 60px;
 }
 
 #pointer{

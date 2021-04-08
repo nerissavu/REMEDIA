@@ -11,7 +11,7 @@ $template.innerHTML = /*html*/ `
 
         <div class="posts">
             <h1 class="heading">Facts</h1>
-            <fact-container 
+            <fact-container-homepage 
             image='../../../assets/fact/prctm.png'
             user='Admin'
             date='July 29,2019'
@@ -23,9 +23,9 @@ $template.innerHTML = /*html*/ `
             
             Is paracetamol really safe? What is paracetamol? How does paracetamol work? What else don’t we know about paracetamol?          
             '
-            ></fact-container>
+            ></fact-container-homepage>
             <hr>
-            <fact-container
+            <fact-container-homepage
             image='../../../assets/fact/fact3.jpg'
             user='Admin'
             date='June 20,2020'
@@ -35,10 +35,10 @@ $template.innerHTML = /*html*/ `
 
             Possibly lesser known, however, are the historic events and pioneers we can today thank for not only saving millions of lives each year, but for laying the foundations of future vaccine development – something that is front-of-mind as the world rushes to make a viable coronavirus vaccine.         
             '
-            ></fact-container>
+            ></fact-container-homepage>
             <hr>
 
-            <fact-container
+            <fact-container-homepage
             image='../../../assets/fact/fact1.jpg'
             user='Admin'
             date='June 20,2020'
@@ -48,7 +48,7 @@ $template.innerHTML = /*html*/ `
 
             But some medications that used to be standard treatments for bacterial infections are now less effective or don't work at all. When an antibiotic no longer has an effect on a certain strain of bacteria, those bacteria are said to be antibiotic resistant. Antibiotic resistance is one of the world's most pressing health problems.
             "
-            ></fact-container>
+            ></fact-container-homepage>
 
             <!--pagination-->
 

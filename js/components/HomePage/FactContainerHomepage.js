@@ -24,14 +24,14 @@ $template.innerHTML = /*html*/ `
             <p id="preview-content" style="white-space: pre-line ; ">
 
             </p>
-            <button class="btn post-btn"><a id="link" style="color: white; font-size: medium;" href="./7factsaboutparacetamol.html">Read More
+            <button id="post-button" class="btn post-btn"><a id="link" style="color: white; font-size: medium;" href="//#endregion">Read More
                     &nbsp;&nbsp; <i class="fas fa-arrow-right"></i></a>
             </button>
         </div>
     </div>
 `
 
-export default class FactContainer extends HTMLElement {
+export default class FactContainerHomepage extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({mode:'open'});
@@ -42,11 +42,12 @@ export default class FactContainer extends HTMLElement {
         this.$date = this.shadowRoot.getElementById('date')
         this.$title = this.shadowRoot.getElementById('title')
         this.$previewContent = this.shadowRoot.getElementById('preview-content')
+        this.$postButton = this.shadowRoot.getElementById('post-button')
 
     }
 
     static get observedAttributes() {
-        return ['image','user','date','title','preview-content'];
+        return ['image','user','date','title','preview-content','post-button'];
     }
 
     attributeChangedCallback(attrName, oldValue, newValue) {
@@ -72,9 +73,20 @@ export default class FactContainer extends HTMLElement {
                 this.$previewContent.innerHTML = newValue
                 break
 
+            case 'post-button':
+                this.$previewContent.innerHTML = newValue
+                break
+
         }
 
     }   
+
+    connectedCallback() {
+        this.$postButton.onsubmit = (event) => {
+            event.preventDefault();
+        }
+        
+    }
 }
 
-window.customElements.define('fact-container', FactContainer)
+window.customElements.define('fact-container-homepage', FactContainerHomepage)

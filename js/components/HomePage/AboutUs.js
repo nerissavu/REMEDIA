@@ -35,8 +35,8 @@ $template.innerHTML = /*html*/ `
                             citizens through discussion, passion, and care.
                         </p>
                         <div class="hgt-20"></div>
-                        <div class="home-button"><br>
-                            <a style="    font-family: 'Poppins', sans-serif;   " href="" class="btn-color-background">Go to advisory</a>
+                        <div class="home-button" >
+                            <a id="button" style="    font-family: 'Poppins', sans-serif;   " href="# " class="btn-color-background">Go to advisory</a>
                         </div>
                     </div>
                 </div>
@@ -67,6 +67,14 @@ export default class AboutUs extends HTMLElement {
         this.attachShadow({mode:'open'});
         this.shadowRoot.appendChild($template.content.cloneNode(true))
 
+        this.$advisoryButton = this.shadowRoot.getElementById('button')
+    }
+
+    connectedCallback() {
+        this.$advisoryButton.onclick = (event) => {
+            event.preventDefault()
+            router.navigate('/advisory');
+        }
     }
 }
 
