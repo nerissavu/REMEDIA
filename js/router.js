@@ -33,8 +33,8 @@ router.on('/fact/sevenfactsaboutparacetamol', function(){
     $app.innerHTML = '<seven-facts-about-paracetamol></seven-facts-about-paracetamol>'
 }).resolve();
 
-// router.on(function(){
-//     router.navigate('/homepage')
-// }).resolve();
+router.on(function(){
+    router.navigate('/homepage')
+}).resolve();
 
 window.router = router;

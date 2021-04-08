@@ -48,7 +48,7 @@ export default class PostList extends HTMLElement {
         }
 
         listenPosts((data)=> {
-            console.log(data)
+            this.$postList.innerHTML =""
             for(let post of data) {
                 console.log(data[0])
                 // tạo và gán thuộc tính cho post-container -> <post-container content=""></post-container>

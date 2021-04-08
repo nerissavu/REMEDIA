@@ -13,7 +13,7 @@ $template.innerHTML = /*html*/ `
     <br>
     <br>
     <br>
-    <posts-session
+    <fact-posts-session
         source='{ 
             "href": "https://www.mayoclinic.org/healthy-lifestyle/consumer-health/in-depth/antibiotics/art-20045720",
             "title": "7 Important Facts Everyone Should Know About Paracetamol"
@@ -44,7 +44,7 @@ $template.innerHTML = /*html*/ `
         author="
         By Pharmacist Diary
         "
-    ></posts-session>
+    ></fact-posts-session>
     <foo-ter></foo-ter>
 `
 

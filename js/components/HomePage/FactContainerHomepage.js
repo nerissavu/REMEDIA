@@ -73,20 +73,19 @@ export default class FactContainerHomepage extends HTMLElement {
                 this.$previewContent.innerHTML = newValue
                 break
 
-            case 'post-button':
-                this.$previewContent.innerHTML = newValue
-                break
-
+            // case 'post-button':
+            //     connectedCallback() {
+            //         this.$postButton.onsubmit = (event) => {
+            //             event.preventDefault();
+            //             router.navigate(newValue)
+            //         }
+            //     }
+            //     break
         }
 
     }   
 
-    connectedCallback() {
-        this.$postButton.onsubmit = (event) => {
-            event.preventDefault();
-        }
-        
-    }
+    
 }
 
 window.customElements.define('fact-container-homepage', FactContainerHomepage)

@@ -4,16 +4,17 @@ import { getDataFromDocs } from "../utils.js";
 export async function post(author, date, postTitle, image, image_name, postContent) {
 
 
-    firebase.storage().ref('image_post/'+ image_name).put(image)
-    firebase.storage().ref('image_post/'+ image_name).getDownloadURL().then(async(url) => {
-        await firebase.firestore().collection("posts").add({
-            author: author,
-            date: date,
-            image: url,
-            postTitle: postTitle,
-            postContent: postContent,
-        });
-    })
+    await firebase.storage().ref('image_post/'+ image_name).put(image)
+    let url = await firebase.storage().ref('image_post/'+ image_name).getDownloadURL()
+    
+
+    await firebase.firestore().collection("posts").add({
+        author: author,
+        date: date,
+        image: url,
+        postTitle: postTitle,
+        postContent: postContent,
+    });
     alert("Posted successfully");
 }
 

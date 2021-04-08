@@ -44,6 +44,10 @@ export default class AdvisoryScreen extends HTMLElement {
         this.shadowRoot.appendChild($template.content.cloneNode(true))
 
     }
+
+    connectedCallback(){
+        window.scrollTo(0, 0);
+    }
 }
 
 
